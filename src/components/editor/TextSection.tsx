@@ -1,4 +1,4 @@
-export default function TextSection() {
+const TextSection = () => {
   return (
     <section>
       <h2 className="mb-3 text-lg font-semibold text-[#2d3a4a]">Texto</h2>
@@ -16,4 +16,6 @@ export default function TextSection() {
       </div>
     </section>
   );
-} 
+}
+
+export default TextSection;

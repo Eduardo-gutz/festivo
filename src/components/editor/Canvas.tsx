@@ -1,4 +1,4 @@
-export default function Canvas() {
+const Canvas = () => {
   return (
     <div className="flex h-[520px] w-full max-w-xl flex-col items-center justify-center rounded-3xl bg-white text-center shadow-xl">
       <div className="flex flex-col items-center gap-4">
@@ -11,3 +11,5 @@ export default function Canvas() {
     </div>
   );
 } 
+
+export default Canvas;

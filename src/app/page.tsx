@@ -1,7 +1,7 @@
 import Sidebar from "@/components/editor/Sidebar";
 import Canvas from "@/components/editor/Canvas";
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="bg-page flex min-h-screen">
       <Sidebar />
@@ -11,3 +11,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;

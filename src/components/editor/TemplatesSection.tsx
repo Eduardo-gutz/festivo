@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function TemplatesSection() {
+const TemplatesSection = () => {
   return (
     <section>
       <h2 className="mb-3 text-lg font-semibold text-[#2d3a4a]">Plantillas</h2>
@@ -18,3 +18,5 @@ export default function TemplatesSection() {
     </section>
   );
 } 
+
+export default TemplatesSection;

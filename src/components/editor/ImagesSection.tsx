@@ -1,6 +1,6 @@
 import IconButton from '../ui/IconButton';
 
-export default function ImagesSection() {
+const ImagesSection = () => {
   return (
     <section>
       <h2 className="mb-3 text-lg font-semibold text-primary">Imágenes</h2>
@@ -11,3 +11,5 @@ export default function ImagesSection() {
     </section>
   );
 } 
+
+export default ImagesSection;

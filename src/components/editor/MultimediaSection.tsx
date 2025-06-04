@@ -1,6 +1,6 @@
 import IconButton from "../ui/IconButton";
 
-export default function MultimediaSection() {
+const MultimediaSection = () => {
   return (
     <section>
       <h2 className="mb-3 text-lg font-semibold text-[#2d3a4a]">
@@ -12,4 +12,6 @@ export default function MultimediaSection() {
       </div>
     </section>
   );
-} 
+}
+
+export default MultimediaSection;

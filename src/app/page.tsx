@@ -1,14 +1,19 @@
-import Sidebar from "@/components/editor/Sidebar";
-import Canvas from "@/components/editor/Canvas";
+import Sidebar from "@/components/editor/sidebar/Sidebar";
+import CanvasWrapper from "@/components/editor/CanvasWrapper";
+import { EditorProvider } from "@/components/editor/EditorContext";
+import LayersPanel from "@/components/editor/layers/LayersPanel";
 
 const Home = () => {
   return (
-    <div className="bg-page flex min-h-screen">
-      <Sidebar />
-      <main className="flex flex-1 items-center justify-center p-6">
-        <Canvas />
-      </main>
-    </div>
+    <EditorProvider>
+      <div className="bg-page flex min-h-screen">
+        <Sidebar />
+        <main className="flex flex-1 items-center justify-center">
+          <CanvasWrapper />
+        </main>
+        <LayersPanel />
+      </div>
+    </EditorProvider>
   );
 }
 

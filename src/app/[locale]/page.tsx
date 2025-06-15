@@ -1,8 +1,9 @@
 'use client';
 import { redirect } from "next/navigation";
+import { routing } from "@/i18n/routing";
 
 const Home = () => {
-  redirect('/login');
+  redirect(`/${routing.defaultLocale}`);
 };
 
 export default Home;

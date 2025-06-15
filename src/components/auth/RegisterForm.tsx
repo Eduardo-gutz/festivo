@@ -8,6 +8,7 @@ import PasswordInput from '../ui/PasswordInput';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail } from 'lucide-react';
+import { useTranslations, useLocale } from 'next-intl';
 
 type FormData = {
   name: string;
@@ -20,6 +21,8 @@ type FormData = {
 };
 
 const RegisterForm: React.FC = () => {
+  const t = useTranslations('RegisterForm');
+  const locale = useLocale();
   const { 
     register, 
     handleSubmit, 
@@ -47,34 +50,34 @@ const RegisterForm: React.FC = () => {
             unoptimized
           />
         </div>
-        <h1 className="text-2xl font-bold text-primary">Festivo</h1>
+        <h1 className="text-2xl font-bold text-primary">{t('title')}</h1>
         <p className="text-sm text-gray-600 mt-1 text-center">
-          Crea tu cuenta para comenzar a diseñar invitaciones
+          {t('subtitle')}
         </p>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-6">
         <div className="grid grid-cols-2 gap-4">
           <Input
-            label="Nombre"
+            label={t('name')}
             error={errors.name?.message}
             {...register('name', {
-              required: 'El nombre es requerido',
+              required: t('errors.nameRequired'),
               minLength: {
                 value: 2,
-                message: 'El nombre debe tener al menos 2 caracteres'
+                message: t('errors.nameMinLength')
               }
             })}
             placeholder="Juan"
           />
           <Input
-            label="Apellido"
+            label={t('lastName')}
             error={errors.lastName?.message}
             {...register('lastName', {
-              required: 'El apellido es requerido',
+              required: t('errors.lastNameRequired'),
               minLength: {
                 value: 2,
-                message: 'El apellido debe tener al menos 2 caracteres'
+                message: t('errors.lastNameMinLength')
               }
             })}
             placeholder="Pérez"
@@ -82,13 +85,13 @@ const RegisterForm: React.FC = () => {
         </div>
 
         <Input
-          label="Correo electrónico"
+          label={t('email')}
           error={errors.email?.message}
           {...register('email', {
-            required: 'El correo electrónico es requerido',
+            required: t('errors.emailRequired'),
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Correo electrónico inválido'
+              message: t('errors.emailInvalid')
             }
           })}
           type="email"
@@ -98,18 +101,18 @@ const RegisterForm: React.FC = () => {
 
         <div>
           <PasswordInput
-            label="Contraseña"
+            label={t('password')}
             error={errors.password?.message}
-            helperText="Mínimo 8 caracteres."
+            helperText={t('passwordHelperText')}
             {...register('password', {
-              required: 'La contraseña es requerida',
+              required: t('errors.passwordRequired'),
               minLength: {
                 value: 8,
-                message: 'La contraseña debe tener al menos 8 caracteres'
+                message: t('errors.passwordMinLength')
               },
               pattern: {
                 value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-                message: 'La contraseña debe incluir una letra mayúscula, una minúscula, un número y un caracter especial'
+                message: t('errors.passwordPattern')
               }
             })}
           />
@@ -117,11 +120,11 @@ const RegisterForm: React.FC = () => {
 
         <div>
           <PasswordInput
-            label="Confirmar contraseña"
+            label={t('confirmPassword')}
             error={errors.confirmPassword?.message}
             {...register('confirmPassword', {
-              required: 'Por favor confirme su contraseña',
-              validate: value => value === password || 'Las contraseñas no coinciden'
+              required: t('errors.confirmPasswordRequired'),
+              validate: value => value === password || t('errors.passwordsDoNotMatch')
             })}
           />
         </div>
@@ -132,11 +135,22 @@ const RegisterForm: React.FC = () => {
               error={errors.termsAccepted?.message}
               label={
                 <span className="text-sm text-gray-700">
-                  Acepto los <Link href="/terminos" className="text-blue-700 hover:underline">términos y condiciones</Link> y la <Link href="/privacidad" className="text-blue-700 hover:underline">política de privacidad</Link>
+                  {t.rich('termsAccepted', {
+                    terms: (children) => (
+                      <Link href={`/${locale}/terms`} className="text-blue-700 hover:underline">
+                        {children}
+                      </Link>
+                    ),
+                    privacy: (children) => (
+                      <Link href={`/${locale}/privacy`} className="text-blue-700 hover:underline">
+                        {children}
+                      </Link>
+                    )
+                  })}
                 </span>
               }
               {...register('termsAccepted', {
-                required: 'Debes aceptar los términos y condiciones'
+                required: t('errors.termsRequired')
               })}
             />
           </div>
@@ -144,7 +158,7 @@ const RegisterForm: React.FC = () => {
             <Checkbox
               label={
                 <span className="text-sm text-gray-700">
-                  Quiero recibir novedades y consejos sobre invitaciones
+                  {t('newsSubscription')}
                 </span>
               }
               {...register('newsSubscription')}
@@ -153,7 +167,7 @@ const RegisterForm: React.FC = () => {
         </div>
 
         <Button type="submit" fullWidth className="mt-6">
-          Crear cuenta
+          {t('createAccount')}
         </Button>
 
         <div className="relative my-6">
@@ -161,7 +175,7 @@ const RegisterForm: React.FC = () => {
             <div className="w-full border-t border-gray-300"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">O regístrate con</span>
+            <span className="px-2 bg-white text-gray-500">{t('orRegisterWith')}</span>
           </div>
         </div>
 
@@ -175,7 +189,7 @@ const RegisterForm: React.FC = () => {
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
               </svg>
             }
-            provider="Google"
+            provider={t('google')}
           />
           <SocialButton
             icon={
@@ -183,13 +197,13 @@ const RegisterForm: React.FC = () => {
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
             }
-            provider="Facebook"
+            provider={t('facebook')}
           />
         </div>
 
         <div className="text-center mt-4">
           <p className="text-sm text-gray-600">
-            ¿Ya tienes una cuenta? <Link href="/login" className="text-blue-700 hover:underline font-medium">Inicia sesión aquí</Link>
+            {t('alreadyHaveAccount')} <Link href={`/${locale}/login`} className="text-blue-700 hover:underline font-medium">{t('loginHere')}</Link>
           </p>
         </div>
       </form>

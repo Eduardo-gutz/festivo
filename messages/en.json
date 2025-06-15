@@ -1,0 +1,52 @@
+{
+  "HomePage": {
+    "title": "Welcome to Festivo",
+    "description": "Your festive planning app"
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "features": "Features",
+    "templates": "Templates",
+    "pricing": "Pricing",
+    "signUp": "Sign Up"
+  },
+  "Language": {
+    "select": "Select language",
+    "en": "EN",
+    "es": "ES"
+  },
+  "RegisterForm": {
+    "title": "Festivo",
+    "subtitle": "Create your account to start designing invitations",
+    "name": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "passwordHelperText": "Minimum 8 characters.",
+    "termsAccepted": "I accept the <terms>terms and conditions</terms> and the <privacy>privacy policy</privacy>",
+    "newsSubscription": "I want to receive news and tips about invitations",
+    "createAccount": "Create Account",
+    "orRegisterWith": "Or register with",
+    "google": "Google",
+    "facebook": "Facebook",
+    "alreadyHaveAccount": "Already have an account?",
+    "loginHere": "Log in here",
+    "errors": {
+      "nameRequired": "First name is required",
+      "nameMinLength": "First name must have at least 2 characters",
+      "lastNameRequired": "Last name is required",
+      "lastNameMinLength": "Last name must have at least 2 characters",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must have at least 8 characters",
+      "passwordPattern": "Password must include an uppercase letter, a lowercase letter, a number and a special character",
+      "confirmPasswordRequired": "Please confirm your password",
+      "passwordsDoNotMatch": "Passwords do not match",
+      "termsRequired": "You must accept the terms and conditions"
+    }
+  }
+} 

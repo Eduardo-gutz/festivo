@@ -1,0 +1,52 @@
+{
+  "HomePage": {
+    "title": "Bienvenido a Festivo",
+    "description": "Tu aplicación para planificación de festividades"
+  },
+  "Navigation": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "features": "Características",
+    "templates": "Plantillas",
+    "pricing": "Precios",
+    "signUp": "Registrarse"
+  },
+  "Language": {
+    "select": "Seleccionar idioma",
+    "en": "EN",
+    "es": "ES"
+  },
+  "RegisterForm": {
+    "title": "Festivo",
+    "subtitle": "Crea tu cuenta para comenzar a diseñar invitaciones",
+    "name": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "passwordHelperText": "Mínimo 8 caracteres.",
+    "termsAccepted": "Acepto los <terms>términos y condiciones</terms> y la <privacy>política de privacidad</privacy>",
+    "newsSubscription": "Quiero recibir novedades y consejos sobre invitaciones",
+    "createAccount": "Crear cuenta",
+    "orRegisterWith": "O regístrate con",
+    "google": "Google",
+    "facebook": "Facebook",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "loginHere": "Inicia sesión aquí",
+    "errors": {
+      "nameRequired": "El nombre es requerido",
+      "nameMinLength": "El nombre debe tener al menos 2 caracteres",
+      "lastNameRequired": "El apellido es requerido",
+      "lastNameMinLength": "El apellido debe tener al menos 2 caracteres",
+      "emailRequired": "El correo electrónico es requerido",
+      "emailInvalid": "Correo electrónico inválido",
+      "passwordRequired": "La contraseña es requerida",
+      "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
+      "passwordPattern": "La contraseña debe incluir una letra mayúscula, una minúscula, un número y un caracter especial",
+      "confirmPasswordRequired": "Por favor confirme su contraseña",
+      "passwordsDoNotMatch": "Las contraseñas no coinciden",
+      "termsRequired": "Debes aceptar los términos y condiciones"
+    }
+  }
+} 

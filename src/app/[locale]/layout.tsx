@@ -3,8 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from "next/navigation";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/modules/core/components/Navbar";
 import { routing } from "@/i18n/routing";
+import StoreProvider from "@/modules/redux/context/StoreProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,10 +38,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NextIntlClientProvider>
-          <Navbar />
-          {children}
-        </NextIntlClientProvider>
+        <StoreProvider>
+          <NextIntlClientProvider>
+            <Navbar />
+            {children}
+          </NextIntlClientProvider>
+        </StoreProvider>
       </body>
     </html>
   );

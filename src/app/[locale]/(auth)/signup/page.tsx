@@ -1,6 +1,5 @@
 'use client';
-
-import RegisterForm from '@/components/auth/RegisterForm';
+import RegisterForm from "@/modules/auth/components/RegisterForm";
 
 const Signup = () => {
   return (

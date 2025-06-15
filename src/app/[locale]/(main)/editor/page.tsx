@@ -1,8 +1,8 @@
 import React from 'react'
-import Sidebar from '@/components/editor/sidebar/Sidebar'
-import { EditorProvider } from '@/components/editor/EditorContext'
-import LayersPanel from '@/components/editor/layers/LayersPanel'
-import CanvasWrapper from '@/components/editor/CanvasWrapper'
+import Sidebar from '@/modules/editor/components/sidebar/Sidebar'
+import { EditorProvider } from '@/modules/editor/context/EditorContext'
+import LayersPanel from '@/modules/editor/components/layers/LayersPanel'
+import CanvasWrapper from '@/modules/editor/components/CanvasWrapper'
 
 const EditorPage = () => {
   return (

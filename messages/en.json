@@ -29,6 +29,7 @@
     "termsAccepted": "I accept the <terms>terms and conditions</terms> and the <privacy>privacy policy</privacy>",
     "newsSubscription": "I want to receive news and tips about invitations",
     "createAccount": "Create Account",
+    "creatingAccount": "Creating Account...",
     "orRegisterWith": "Or register with",
     "google": "Google",
     "facebook": "Facebook",
@@ -41,12 +42,14 @@
       "lastNameMinLength": "Last name must have at least 2 characters",
       "emailRequired": "Email is required",
       "emailInvalid": "Invalid email",
+      "emailExists": "This email is already registered",
       "passwordRequired": "Password is required",
       "passwordMinLength": "Password must have at least 8 characters",
       "passwordPattern": "Password must include an uppercase letter, a lowercase letter, a number and a special character",
       "confirmPasswordRequired": "Please confirm your password",
       "passwordsDoNotMatch": "Passwords do not match",
-      "termsRequired": "You must accept the terms and conditions"
+      "termsRequired": "You must accept the terms and conditions",
+      "generalError": "There was an error during registration. Please try again."
     }
   }
 } 

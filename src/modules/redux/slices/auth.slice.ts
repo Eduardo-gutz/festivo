@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { signupThunk } from './thunk/auth.thunk';
 
 interface AuthState {
   isAuthenticated: boolean;
-  user: any | null;
+  loading: boolean;
 }
 
 const initialState: AuthState = {
   isAuthenticated: false,
-  user: null,
+  loading: false,
 };
 
 export const authSlice = createSlice({
@@ -15,13 +16,24 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, action: PayloadAction<{ user: any }>) => {
-      state.user = action.payload.user;
       state.isAuthenticated = true;
     },
     logout: (state) => {
-      state.user = null;
       state.isAuthenticated = false;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(signupThunk.fulfilled, (state, action) => {
+      state.isAuthenticated = true;
+      state.loading = false;
+    })
+    .addCase(signupThunk.rejected, (state, action) => {
+      state.isAuthenticated = false;
+      state.loading = false;
+    })
+    .addCase(signupThunk.pending, (state, action) => {
+      state.loading = true;
+    });
   },
 });
 

@@ -4,11 +4,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Mail } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import Input from '@/modules/core/components/Input';
 import Button from '@/modules/core/components/Button';
 import Checkbox from '@/modules/core/components/Checkbox';
 import SocialButton from '@/modules/core/components/SocialButton';
 import PasswordInput from '@/modules/core/components/PasswordInput';
+import { useAppDispatch } from '@/modules/redux/hooks/reduxAppHooks';
+import { signupThunk } from '@/modules/redux/slices/thunk/auth.thunk';
+import { REGEX, MIN_LENGTH } from '@/modules/auth/utils/validation';
 
 type FormData = {
   name: string;
@@ -23,18 +27,40 @@ type FormData = {
 const RegisterForm: React.FC = () => {
   const t = useTranslations('RegisterForm');
   const locale = useLocale();
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  
   const { 
     register, 
     handleSubmit, 
-    formState: { errors },
-    watch
+    formState: { errors, isSubmitting },
+    watch,
+    setError
   } = useForm<FormData>();
   
   const password = watch('password');
 
-  const onSubmit = (data: FormData) => {
-    // Aquí iría la lógica de registro
-    console.log('Datos del formulario:', data);
+  const onSubmit = async (data: FormData) => {
+    try {
+      const registerData = {
+        full_name: `${data.name} ${data.lastName}`,
+        email: data.email,
+        username: data.email,
+        password: data.password
+      };
+      
+      await dispatch(signupThunk(registerData)).unwrap();
+      
+      router.push(`/dashboard`);
+    } catch (error: any) {
+      if (error.message) {
+        if (error.message.toLowerCase().includes('email')) {
+          setError('email', { type: 'server', message: t('errors.emailExists') });
+        } else {
+          setError('root', { type: 'server', message: t('errors.generalError') });
+        }
+      }
+    }
   };
 
   return (
@@ -57,6 +83,12 @@ const RegisterForm: React.FC = () => {
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-6">
+        {errors.root && (
+          <div className="p-2 bg-red-50 text-red-600 text-sm rounded border border-red-200">
+            {errors.root.message}
+          </div>
+        )}
+        
         <div className="grid grid-cols-2 gap-4">
           <Input
             label={t('name')}
@@ -64,7 +96,7 @@ const RegisterForm: React.FC = () => {
             {...register('name', {
               required: t('errors.nameRequired'),
               minLength: {
-                value: 2,
+                value: MIN_LENGTH.NAME,
                 message: t('errors.nameMinLength')
               }
             })}
@@ -76,7 +108,7 @@ const RegisterForm: React.FC = () => {
             {...register('lastName', {
               required: t('errors.lastNameRequired'),
               minLength: {
-                value: 2,
+                value: MIN_LENGTH.LAST_NAME,
                 message: t('errors.lastNameMinLength')
               }
             })}
@@ -90,7 +122,7 @@ const RegisterForm: React.FC = () => {
           {...register('email', {
             required: t('errors.emailRequired'),
             pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              value: REGEX.EMAIL,
               message: t('errors.emailInvalid')
             }
           })}
@@ -107,11 +139,11 @@ const RegisterForm: React.FC = () => {
             {...register('password', {
               required: t('errors.passwordRequired'),
               minLength: {
-                value: 8,
+                value: MIN_LENGTH.PASSWORD,
                 message: t('errors.passwordMinLength')
               },
               pattern: {
-                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
+                value: REGEX.PASSWORD,
                 message: t('errors.passwordPattern')
               }
             })}
@@ -166,8 +198,8 @@ const RegisterForm: React.FC = () => {
           </div>
         </div>
 
-        <Button type="submit" fullWidth className="mt-6">
-          {t('createAccount')}
+        <Button type="submit" fullWidth className="mt-6" disabled={isSubmitting}>
+          {isSubmitting ? t('creatingAccount') : t('createAccount')}
         </Button>
 
         <div className="relative my-6">

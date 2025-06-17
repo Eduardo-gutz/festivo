@@ -8,7 +8,7 @@ export default function Navbar() {
   const t = useTranslations('Navigation');
 
   return (
-    <nav className="p-4 shadow-2xl">
+    <nav className="p-2 shadow-2xl">
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
         <div className="flex items-center gap-1">
           <Image src="/logo.png" alt="Logo" width={32} height={32} unoptimized priority className='mb-2' />

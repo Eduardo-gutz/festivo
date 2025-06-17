@@ -1,7 +1,7 @@
 {
   "HomePage": {
     "title": "Bienvenido a Festivo",
-    "description": "Tu aplicación para planificación de festividades"
+    "description": "Tu app de planificación festiva"
   },
   "Navigation": {
     "home": "Inicio",
@@ -27,26 +27,29 @@
     "confirmPassword": "Confirmar contraseña",
     "passwordHelperText": "Mínimo 8 caracteres.",
     "termsAccepted": "Acepto los <terms>términos y condiciones</terms> y la <privacy>política de privacidad</privacy>",
-    "newsSubscription": "Quiero recibir novedades y consejos sobre invitaciones",
-    "createAccount": "Crear cuenta",
+    "newsSubscription": "Quiero recibir noticias y consejos sobre invitaciones",
+    "createAccount": "Crear Cuenta",
+    "creatingAccount": "Creando Cuenta...",
     "orRegisterWith": "O regístrate con",
     "google": "Google",
     "facebook": "Facebook",
     "alreadyHaveAccount": "¿Ya tienes una cuenta?",
     "loginHere": "Inicia sesión aquí",
     "errors": {
-      "nameRequired": "El nombre es requerido",
+      "nameRequired": "El nombre es obligatorio",
       "nameMinLength": "El nombre debe tener al menos 2 caracteres",
-      "lastNameRequired": "El apellido es requerido",
+      "lastNameRequired": "El apellido es obligatorio",
       "lastNameMinLength": "El apellido debe tener al menos 2 caracteres",
-      "emailRequired": "El correo electrónico es requerido",
+      "emailRequired": "El correo electrónico es obligatorio",
       "emailInvalid": "Correo electrónico inválido",
-      "passwordRequired": "La contraseña es requerida",
+      "emailExists": "Este correo electrónico ya está registrado",
+      "passwordRequired": "La contraseña es obligatoria",
       "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
-      "passwordPattern": "La contraseña debe incluir una letra mayúscula, una minúscula, un número y un caracter especial",
-      "confirmPasswordRequired": "Por favor confirme su contraseña",
+      "passwordPattern": "La contraseña debe incluir una letra mayúscula, una minúscula, un número y un carácter especial",
+      "confirmPasswordRequired": "Por favor, confirma tu contraseña",
       "passwordsDoNotMatch": "Las contraseñas no coinciden",
-      "termsRequired": "Debes aceptar los términos y condiciones"
+      "termsRequired": "Debes aceptar los términos y condiciones",
+      "generalError": "Hubo un error durante el registro. Por favor, inténtalo de nuevo."
     }
   }
 } 

@@ -24,12 +24,12 @@ export default function LanguageSelector() {
   return (
     <div className="relative">
       <button 
-        className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 border border-gray-200" 
+        className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 border border-gray-200 text-xs" 
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Globe size={18} />
+        <Globe size={16} />
         <span className="capitalize">{t(currentLocale)}</span>
-        <ChevronDown size={18} />
+        <ChevronDown size={16} />
       </button>
       {isOpen && (
         <div className="absolute right-0 z-10 mt-1 overflow-hidden bg-white rounded-md shadow-lg">

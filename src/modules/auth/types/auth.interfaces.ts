@@ -7,7 +7,10 @@ export interface RegisterData {
   full_name: string;
   email: string;
   username: string;
-  password: string;
+  provider: string;
+  token: string;
+  password?: string;
+  verify_email: boolean;
 }
 
 export interface Token {

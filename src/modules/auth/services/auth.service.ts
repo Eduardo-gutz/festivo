@@ -1,15 +1,9 @@
 import apiClient from '../../core/services/api';
-import { LoginData, RegisterData, Token } from '../types/auth.interfaces';
+import { RegisterData, Token } from '../types/auth.interfaces';
 
-export async function login(data: LoginData): Promise<Token> {
-  const formData = new FormData();
-  formData.append('username', data.username);
-  formData.append('password', data.password);
-  
-  const response = await apiClient.post<Token>('/auth/login', formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
+export async function login(token: string): Promise<Token> {
+  const response = await apiClient.post<Token>('/auth/login/token', {
+    token
   });
   
   if (response.data.access_token) {

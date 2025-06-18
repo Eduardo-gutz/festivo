@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loginThunk, signupThunk } from './thunk/auth.thunk';
+import { createSlice } from '@reduxjs/toolkit';
+import { loginThunk, loginWithProviderThunk, signupThunk, signupWithProviderThunk } from './thunk/auth.thunk';
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -23,28 +23,38 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(signupThunk.fulfilled, (state, action) => {
+    builder.addCase(signupThunk.fulfilled, (state) => {
       state.isAuthenticated = true;
       state.loading = false;
     })
-    .addCase(signupThunk.rejected, (state, action) => {
+    .addCase(signupThunk.rejected, (state) => {
       state.isAuthenticated = false;
       state.loading = false;
     })
-    .addCase(signupThunk.pending, (state, action) => {
-      state.loading = true;
-    });
-    builder.addCase(loginThunk.fulfilled, (state, action) => {
+    .addCase(loginThunk.fulfilled, (state) => {
       state.isAuthenticated = true;
       state.loading = false;
     })
-    .addCase(loginThunk.rejected, (state, action) => {
+    .addCase(loginThunk.rejected, (state) => {
       state.isAuthenticated = false;
       state.loading = false;
     })
-    .addCase(loginThunk.pending, (state, action) => {
-      state.loading = true;
-    });
+    .addCase(signupWithProviderThunk.fulfilled, (state) => {
+      state.isAuthenticated = true;
+      state.loading = false;
+    })
+    .addCase(signupWithProviderThunk.rejected, (state) => {
+      state.isAuthenticated = false;
+      state.loading = false;
+    })
+    .addCase(loginWithProviderThunk.fulfilled, (state) => {
+      state.isAuthenticated = true;
+      state.loading = false;
+    })
+    .addCase(loginWithProviderThunk.rejected, (state) => {
+      state.isAuthenticated = false;
+      state.loading = false;
+    })
   },
 });
 

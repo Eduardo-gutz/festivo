@@ -14,6 +14,7 @@ export interface User {
   uid?: string;
   provider?: Provider;
   created_at: number;
+  verify_email: boolean;
 }
 
 export interface UpdateUserData {

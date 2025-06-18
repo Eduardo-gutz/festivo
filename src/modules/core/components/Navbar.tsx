@@ -3,12 +3,27 @@ import { useTranslations } from 'next-intl';
 import LanguageSelector from './LanguageSelector';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useAppDispatch, useAppSelector } from '@/modules/redux/hooks/reduxAppHooks';
+import UserAvatar from './UserAvatar';
+import { useEffect } from 'react';
+import { setCredentials } from '@/modules/redux/slices/auth/auth.slice';
+import { fetchCurrentUserThunk } from '@/modules/redux/slices/user/thunk/user.thunk';
 
 export default function Navbar() {
   const t = useTranslations('Navigation');
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.user);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!!token) {
+      dispatch(setCredentials())
+    }
+  }, [dispatch])
 
   return (
-    <nav className="p-2 shadow-2xl">
+    <nav className="p-2 shadow-2xl relative">
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
         <div className="flex items-center gap-1">
           <Image src="/logo.png" alt="Logo" width={32} height={32} unoptimized priority className='mb-2' />
@@ -31,12 +46,32 @@ export default function Navbar() {
             </Link>
           </div>
           <LanguageSelector />
-          <Link
-            href="/signup"
-            className="hidden md:block px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-hover transition-colors"
-          >
-            {t('signUp')}
-          </Link>
+          <div className="hidden md:flex gap-2">
+            {isAuthenticated && user ? (
+              <div className="gap-2">
+                <UserAvatar 
+                  avatar={user.avatar} 
+                  username={user.username} 
+                  fullName={user.full_name} 
+                />
+              </div>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="px-4 py-2 text-primary border border-primary rounded-md hover:bg-primary/20 transition-colors"
+                >
+                  {t('login')}
+                </Link> 
+                <Link
+                  href="/signup" 
+                  className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-hover transition-colors"
+                >
+                  {t('signUp')}
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </nav>

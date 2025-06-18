@@ -10,7 +10,8 @@
     "features": "Features",
     "templates": "Templates",
     "pricing": "Pricing",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "login": "Login"
   },
   "Language": {
     "select": "Select language",
@@ -50,6 +51,28 @@
       "passwordsDoNotMatch": "Passwords do not match",
       "termsRequired": "You must accept the terms and conditions",
       "generalError": "There was an error during registration. Please try again."
+    }
+  },
+  "LoginForm": {
+    "title": "Festivo",
+    "subtitle": "Sign in to access your account",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "login": "Sign in",
+    "loggingIn": "Signing in...",
+    "orLoginWith": "Or sign in with",
+    "google": "Google",
+    "facebook": "Facebook",
+    "noAccountYet": "Don't have an account?",
+    "signupHere": "Sign up here",
+    "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "passwordRequired": "Password is required",
+      "invalidCredentials": "Invalid credentials, please verify your email and password",
+      "generalError": "There was an error during sign in. Please try again."
     }
   }
 } 

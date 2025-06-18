@@ -11,21 +11,18 @@ import Checkbox from '@/modules/core/components/Checkbox';
 import SocialButton from '@/modules/core/components/SocialButton';
 import PasswordInput from '@/modules/core/components/PasswordInput';
 import { useAppDispatch } from '@/modules/redux/hooks/reduxAppHooks';
-import { signupThunk } from '@/modules/redux/slices/auth/thunk/auth.thunk';
-import { REGEX, MIN_LENGTH } from '@/modules/auth/utils/validation';
+import { loginThunk } from '@/modules/redux/slices/auth/thunk/auth.thunk';
+import { LoginData } from '@/modules/auth/types/auth.interfaces';
+import { REGEX } from '@/modules/auth/utils/validation';
 
 type FormData = {
-  name: string;
-  lastName: string;
   email: string;
   password: string;
-  confirmPassword: string;
-  termsAccepted: boolean;
-  newsSubscription: boolean;
+  rememberMe: boolean;
 };
 
-const RegisterForm: React.FC = () => {
-  const t = useTranslations('RegisterForm');
+const LoginForm: React.FC = () => {
+  const t = useTranslations('LoginForm');
   const locale = useLocale();
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -34,28 +31,23 @@ const RegisterForm: React.FC = () => {
     register, 
     handleSubmit, 
     formState: { errors, isSubmitting },
-    watch,
     setError
   } = useForm<FormData>();
-  
-  const password = watch('password');
 
   const onSubmit = async (data: FormData) => {
     try {
-      const registerData = {
-        full_name: `${data.name} ${data.lastName}`,
-        email: data.email,
+      const loginData: LoginData = {
         username: data.email,
         password: data.password
       };
       
-      await dispatch(signupThunk(registerData)).unwrap();
+      await dispatch(loginThunk(loginData)).unwrap();
       
       router.push(`/dashboard`);
     } catch (error: any) {
       if (error.message) {
-        if (error.message.toLowerCase().includes('email')) {
-          setError('email', { type: 'server', message: t('errors.emailExists') });
+        if (error.message.toLowerCase().includes('contraseña')) {
+          setError('root', { type: 'server', message: t('errors.invalidCredentials') });
         } else {
           setError('root', { type: 'server', message: t('errors.generalError') });
         }
@@ -69,7 +61,7 @@ const RegisterForm: React.FC = () => {
         <div className="w-16 h-16 mb-3 flex items-center justify-center">
           <Image 
             src="/logo.png"
-            alt="Logo Invitify"
+            alt="Logo Festivo"
             width={64}
             height={64}
             priority
@@ -89,33 +81,6 @@ const RegisterForm: React.FC = () => {
           </div>
         )}
         
-        <div className="grid grid-cols-2 gap-4">
-          <Input
-            label={t('name')}
-            error={errors.name?.message}
-            {...register('name', {
-              required: t('errors.nameRequired'),
-              minLength: {
-                value: MIN_LENGTH.NAME,
-                message: t('errors.nameMinLength')
-              }
-            })}
-            placeholder="Juan"
-          />
-          <Input
-            label={t('lastName')}
-            error={errors.lastName?.message}
-            {...register('lastName', {
-              required: t('errors.lastNameRequired'),
-              minLength: {
-                value: MIN_LENGTH.LAST_NAME,
-                message: t('errors.lastNameMinLength')
-              }
-            })}
-            placeholder="Pérez"
-          />
-        </div>
-
         <Input
           label={t('email')}
           error={errors.email?.message}
@@ -135,71 +100,30 @@ const RegisterForm: React.FC = () => {
           <PasswordInput
             label={t('password')}
             error={errors.password?.message}
-            helperText={t('passwordHelperText')}
             {...register('password', {
-              required: t('errors.passwordRequired'),
-              minLength: {
-                value: MIN_LENGTH.PASSWORD,
-                message: t('errors.passwordMinLength')
-              },
-              pattern: {
-                value: REGEX.PASSWORD,
-                message: t('errors.passwordPattern')
-              }
+              required: t('errors.passwordRequired')
             })}
           />
+          <div className="flex justify-end mt-1">
+            <Link href={`/${locale}/reset-password`} className="text-sm text-blue-700 hover:underline">
+              {t('forgotPassword')}
+            </Link>
+          </div>
         </div>
 
-        <div>
-          <PasswordInput
-            label={t('confirmPassword')}
-            error={errors.confirmPassword?.message}
-            {...register('confirmPassword', {
-              required: t('errors.confirmPasswordRequired'),
-              validate: value => value === password || t('errors.passwordsDoNotMatch')
-            })}
+        <div className="pt-2">
+          <Checkbox 
+            label={
+              <span className="text-sm text-gray-700">
+                {t('rememberMe')}
+              </span>
+            }
+            {...register('rememberMe')}
           />
-        </div>
-
-        <div className="space-y-3 pt-2">
-          <div>
-            <Checkbox 
-              error={errors.termsAccepted?.message}
-              label={
-                <span className="text-sm text-gray-700">
-                  {t.rich('termsAccepted', {
-                    terms: (children) => (
-                      <Link href={`/${locale}/terms`} className="text-blue-700 hover:underline">
-                        {children}
-                      </Link>
-                    ),
-                    privacy: (children) => (
-                      <Link href={`/${locale}/privacy`} className="text-blue-700 hover:underline">
-                        {children}
-                      </Link>
-                    )
-                  })}
-                </span>
-              }
-              {...register('termsAccepted', {
-                required: t('errors.termsRequired')
-              })}
-            />
-          </div>
-          <div>
-            <Checkbox
-              label={
-                <span className="text-sm text-gray-700">
-                  {t('newsSubscription')}
-                </span>
-              }
-              {...register('newsSubscription')}
-            />
-          </div>
         </div>
 
         <Button type="submit" fullWidth className="mt-6" disabled={isSubmitting}>
-          {isSubmitting ? t('creatingAccount') : t('createAccount')}
+          {isSubmitting ? t('loggingIn') : t('login')}
         </Button>
 
         <div className="relative my-6">
@@ -207,7 +131,7 @@ const RegisterForm: React.FC = () => {
             <div className="w-full border-t border-gray-300"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">{t('orRegisterWith')}</span>
+            <span className="px-2 bg-white text-gray-500">{t('orLoginWith')}</span>
           </div>
         </div>
 
@@ -235,7 +159,7 @@ const RegisterForm: React.FC = () => {
 
         <div className="text-center mt-4">
           <p className="text-sm text-gray-600">
-            {t('alreadyHaveAccount')} <Link href={`/${locale}/login`} className="text-blue-700 hover:underline font-medium">{t('loginHere')}</Link>
+            {t('noAccountYet')} <Link href={`/${locale}/signup`} className="text-blue-700 hover:underline font-medium">{t('signupHere')}</Link>
           </p>
         </div>
       </form>
@@ -243,4 +167,4 @@ const RegisterForm: React.FC = () => {
   );
 };
 
-export default RegisterForm; 
+export default LoginForm; 

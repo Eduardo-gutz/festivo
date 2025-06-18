@@ -10,6 +10,7 @@
   --color-warning: #ffc107;
   --color-page: #f0f0f0;
   --color-foreground: var(--foreground);
+  --color-background: #F9FAFB;
 }
 
 @theme inline {

@@ -10,7 +10,8 @@
     "features": "Características",
     "templates": "Plantillas",
     "pricing": "Precios",
-    "signUp": "Registrarse"
+    "signUp": "Registrarse",
+    "login": "Iniciar sesión"
   },
   "Language": {
     "select": "Seleccionar idioma",
@@ -50,6 +51,28 @@
       "passwordsDoNotMatch": "Las contraseñas no coinciden",
       "termsRequired": "Debes aceptar los términos y condiciones",
       "generalError": "Hubo un error durante el registro. Por favor, inténtalo de nuevo."
+    }
+  },
+  "LoginForm": {
+    "title": "Festivo",
+    "subtitle": "Inicia sesión para acceder a tu cuenta",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "rememberMe": "Recordarme",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "login": "Iniciar sesión",
+    "loggingIn": "Iniciando sesión...",
+    "orLoginWith": "O inicia sesión con",
+    "google": "Google",
+    "facebook": "Facebook",
+    "noAccountYet": "¿No tienes una cuenta?",
+    "signupHere": "Regístrate aquí",
+    "errors": {
+      "emailRequired": "El correo electrónico es obligatorio",
+      "emailInvalid": "Correo electrónico inválido",
+      "passwordRequired": "La contraseña es obligatoria",
+      "invalidCredentials": "Credenciales inválidas, por favor verifica tu correo y contraseña",
+      "generalError": "Hubo un error durante el inicio de sesión. Por favor, inténtalo de nuevo."
     }
   }
 } 

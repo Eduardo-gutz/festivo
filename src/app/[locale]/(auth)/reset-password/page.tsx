@@ -1,14 +1,10 @@
 'use client';
+import ResetPasswordForm from '@/modules/auth/components/ResetPasswordForm';
 
 const ResetPassword = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50">
-      <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-md">
-        <h1 className="mb-6 text-center text-2xl font-bold text-gray-800">Restablecer Contraseña</h1>
-        <div className="space-y-4">
-          {/* Aquí irá el formulario de restablecimiento de contraseña en el futuro */}
-        </div>
-      </div>
+      <ResetPasswordForm />
     </div>
   );
 };

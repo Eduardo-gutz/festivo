@@ -38,12 +38,6 @@ export async function refreshToken(): Promise<Token> {
   return response.data;
 }
 
-export async function logout(): Promise<void> {
-  await apiClient.post('/auth/logout');
-  localStorage.removeItem('token');
-  localStorage.removeItem('refresh_token');
-}
-
 export function isAuthenticated(): boolean {
   return !!localStorage.getItem('token');
 } 

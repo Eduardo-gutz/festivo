@@ -74,5 +74,62 @@
       "invalidCredentials": "Invalid credentials, please verify your email and password",
       "generalError": "There was an error during sign in. Please try again."
     }
+  },
+  "ResetPasswordForm": {
+    "title": "Reset Password",
+    "subtitle": "Enter your email to receive instructions",
+    "email": "Email",
+    "resetPassword": "Send instructions",
+    "sending": "Sending...",
+    "emailSent": "We have sent instructions to reset your password to your email. Please check your inbox.",
+    "backToLogin": "Remember your password?",
+    "loginHere": "Log in here",
+    "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "emailNotFound": "No account was found with this email",
+      "generalError": "An error occurred while sending instructions. Please try again."
+    }
+  },
+  "UpdatePasswordForm": {
+    "title": "New Password",
+    "subtitle": "Create a new password for your account",
+    "validatingCode": "Validating link...",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "passwordHelperText": "Minimum 8 characters, include uppercase, lowercase, numbers and special characters.",
+    "changePassword": "Change password",
+    "changing": "Changing...",
+    "changingPasswordFor": "Changing password for:",
+    "passwordChanged": "Your password has been successfully changed! You can now log in with your new password.",
+    "goToLogin": "Go to sign in",
+    "tryAgain": "Try again",
+    "errors": {
+      "missingCode": "Verification code is missing from the URL",
+      "invalidCode": "The verification code is invalid",
+      "expiredCode": "The verification code has expired",
+      "expiredActionCode": "The link has expired or has already been used",
+      "passwordRequired": "New password is required",
+      "passwordMinLength": "Password must have at least 8 characters",
+      "passwordPattern": "Password must include an uppercase letter, a lowercase letter, a number and a special character",
+      "confirmPasswordRequired": "Please confirm your new password",
+      "passwordsDoNotMatch": "Passwords do not match",
+      "weakPassword": "The password is too weak",
+      "generalError": "An error occurred while updating the password. Please try again."
+    }
+  },
+  "VerifyEmailForm": {
+    "title": "Email Verification",
+    "subtitle": "We're verifying your email address",
+    "verifying": "Verifying...",
+    "emailVerified": "Your email has been successfully verified! You can now sign in to your account.",
+    "goToLogin": "Go to sign in",
+    "goToHome": "Go to home page",
+    "errors": {
+      "missingCode": "Verification code is missing from the URL",
+      "invalidCode": "The verification code is invalid",
+      "expiredCode": "The verification code has expired or has already been used",
+      "generalError": "An error occurred while verifying your email. Please try again."
+    }
   }
 } 

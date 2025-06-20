@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginThunk, loginWithProviderThunk, signupThunk, signupWithProviderThunk } from './thunk/auth.thunk';
+import { loginThunk, loginWithProviderThunk, logoutThunk, signupThunk, signupWithProviderThunk } from './thunk/auth.thunk';
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -52,6 +52,10 @@ export const authSlice = createSlice({
       state.loading = false;
     })
     .addCase(loginWithProviderThunk.rejected, (state) => {
+      state.isAuthenticated = false;
+      state.loading = false;
+    })
+    .addCase(logoutThunk.fulfilled, (state) => {
       state.isAuthenticated = false;
       state.loading = false;
     })

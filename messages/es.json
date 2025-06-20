@@ -74,5 +74,62 @@
       "invalidCredentials": "Credenciales inválidas, por favor verifica tu correo y contraseña",
       "generalError": "Hubo un error durante el inicio de sesión. Por favor, inténtalo de nuevo."
     }
+  },
+  "ResetPasswordForm": {
+    "title": "Restablecer Contraseña",
+    "subtitle": "Ingresa tu correo electrónico para recibir instrucciones",
+    "email": "Correo electrónico",
+    "resetPassword": "Enviar instrucciones",
+    "sending": "Enviando...",
+    "emailSent": "Hemos enviado instrucciones para restablecer tu contraseña a tu correo electrónico. Por favor, revisa tu bandeja de entrada.",
+    "backToLogin": "¿Recuerdas tu contraseña?",
+    "loginHere": "Inicia sesión aquí",
+    "errors": {
+      "emailRequired": "El correo electrónico es obligatorio",
+      "emailInvalid": "Correo electrónico inválido",
+      "emailNotFound": "No se encontró una cuenta con este correo electrónico",
+      "generalError": "Ocurrió un error al enviar las instrucciones. Por favor, inténtalo de nuevo."
+    }
+  },
+  "UpdatePasswordForm": {
+    "title": "Nueva Contraseña",
+    "subtitle": "Crea una nueva contraseña para tu cuenta",
+    "validatingCode": "Validando enlace...",
+    "newPassword": "Nueva contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "passwordHelperText": "Mínimo 8 caracteres, incluir mayúsculas, minúsculas, números y caracteres especiales.",
+    "changePassword": "Cambiar contraseña",
+    "changing": "Cambiando...",
+    "changingPasswordFor": "Cambiando contraseña para:",
+    "passwordChanged": "¡Tu contraseña ha sido cambiada con éxito! Ahora puedes iniciar sesión con tu nueva contraseña.",
+    "goToLogin": "Ir a iniciar sesión",
+    "tryAgain": "Intentar de nuevo",
+    "errors": {
+      "missingCode": "Falta el código de verificación en la URL",
+      "invalidCode": "El código de verificación es inválido",
+      "expiredCode": "El código de verificación ha caducado",
+      "expiredActionCode": "El enlace ha caducado o ya ha sido utilizado",
+      "passwordRequired": "La nueva contraseña es obligatoria",
+      "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
+      "passwordPattern": "La contraseña debe incluir una mayúscula, una minúscula, un número y un carácter especial",
+      "confirmPasswordRequired": "Por favor, confirma tu nueva contraseña",
+      "passwordsDoNotMatch": "Las contraseñas no coinciden",
+      "weakPassword": "La contraseña es demasiado débil",
+      "generalError": "Ocurrió un error al actualizar la contraseña. Por favor, inténtalo de nuevo."
+    }
+  },
+  "VerifyEmailForm": {
+    "title": "Verificación de Correo",
+    "subtitle": "Estamos verificando tu dirección de correo electrónico",
+    "verifying": "Verificando...",
+    "emailVerified": "¡Tu correo electrónico ha sido verificado con éxito! Ahora puedes iniciar sesión con tu cuenta.",
+    "goToLogin": "Ir a iniciar sesión",
+    "goToHome": "Ir a la página principal",
+    "errors": {
+      "missingCode": "Falta el código de verificación en la URL",
+      "invalidCode": "El código de verificación es inválido",
+      "expiredCode": "El código de verificación ha caducado o ya ha sido utilizado",
+      "generalError": "Ocurrió un error al verificar tu correo electrónico. Por favor, inténtalo de nuevo."
+    }
   }
 } 

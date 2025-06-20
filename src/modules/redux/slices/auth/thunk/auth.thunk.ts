@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { register, login } from '@/modules/auth/services/auth.service';
 import { RegisterData, Token, LoginData } from '@/modules/auth/types/auth.interfaces';
 import { fetchCurrentUserThunk } from '../../user/thunk/user.thunk';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { auth, provider } from '@/modules/core/services/firebase';
 
 export const signupThunk = createAsyncThunk(
@@ -78,5 +78,19 @@ export const loginWithProviderThunk = createAsyncThunk(
     } catch (error: any) {
       throw new Error(error.response.data.detail);
     }
+  }
+)
+
+export const logoutThunk = createAsyncThunk(
+  'auth/logout',
+  async () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('refresh_token');
+    
+    await signOut(auth).catch((error) => {
+      console.error(error);
+    });
+
+    return true;
   }
 )

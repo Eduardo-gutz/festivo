@@ -5,9 +5,7 @@ import { fetchCurrentUserThunk } from '@/modules/redux/slices/user/thunk/user.th
 
 const DashboardPage = () => {
   const { user } = useAppSelector((state) => state.user);
-  const { isAuthenticated } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
-  console.log("🚀 ~ DashboardPage ~ user:", user)
 
   useEffect(() => {
     if (!user) {

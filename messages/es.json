@@ -43,14 +43,17 @@
       "lastNameMinLength": "El apellido debe tener al menos 2 caracteres",
       "emailRequired": "El correo electrónico es obligatorio",
       "emailInvalid": "Correo electrónico inválido",
-      "emailExists": "Este correo electrónico ya está registrado",
       "passwordRequired": "La contraseña es obligatoria",
       "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
       "passwordPattern": "La contraseña debe incluir una letra mayúscula, una minúscula, un número y un carácter especial",
       "confirmPasswordRequired": "Por favor, confirma tu contraseña",
       "passwordsDoNotMatch": "Las contraseñas no coinciden",
       "termsRequired": "Debes aceptar los términos y condiciones",
-      "generalError": "Hubo un error durante el registro. Por favor, inténtalo de nuevo."
+      "generalError": "Hubo un error durante el registro. Por favor, inténtalo de nuevo.",
+      "EMAIL_ALREADY_REGISTERED": "Este correo electrónico ya está registrado",
+      "INVALID_CREDENTIALS": "Credenciales inválidas, por favor verifica tu correo y contraseña",
+      "INVALID_EMAIL": "Correo electrónico inválido, por favor verifica tu correo",
+      "EMAIL_EXISTS": "Este correo electrónico ya está registrado"
     }
   },
   "LoginForm": {
@@ -72,7 +75,9 @@
       "emailInvalid": "Correo electrónico inválido",
       "passwordRequired": "La contraseña es obligatoria",
       "invalidCredentials": "Credenciales inválidas, por favor verifica tu correo y contraseña",
-      "generalError": "Hubo un error durante el inicio de sesión. Por favor, inténtalo de nuevo."
+      "generalError": "Hubo un error durante el inicio de sesión. Por favor, inténtalo de nuevo.",
+      "INVALID_CREDENTIALS": "Credenciales inválidas, por favor verifica tu correo y contraseña",
+      "INVALID_EMAIL": "Correo electrónico inválido, por favor verifica tu correo"
     }
   },
   "ResetPasswordForm": {

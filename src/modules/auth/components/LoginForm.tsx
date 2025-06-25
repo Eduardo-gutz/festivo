@@ -9,7 +9,7 @@ import Input from '@/modules/core/components/Input';
 import Button from '@/modules/core/components/Button';
 import Checkbox from '@/modules/core/components/Checkbox';
 import PasswordInput from '@/modules/core/components/PasswordInput';
-import { useAppDispatch } from '@/modules/redux/hooks/reduxAppHooks';
+import { useAppDispatch, useAppSelector } from '@/modules/redux/hooks/reduxAppHooks';
 import { loginThunk } from '@/modules/redux/slices/auth/thunk/auth.thunk';
 import { LoginData } from '@/modules/auth/types/auth.interfaces';
 import { REGEX } from '@/modules/auth/utils/validation';
@@ -26,6 +26,8 @@ const LoginForm: React.FC = () => {
   const locale = useLocale();
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const { error } = useAppSelector((state) => state.auth);
+  console.log("🚀 ~ LoginForm.tsx:30 ~ error:", error)
 
   const {
     register,
@@ -45,13 +47,7 @@ const LoginForm: React.FC = () => {
 
       router.push(`/dashboard`);
     } catch (error: any) {
-      if (error.message) {
-        if (error.message.toLowerCase().includes('contraseña')) {
-          setError('root', { type: 'server', message: t('errors.invalidCredentials') });
-        } else {
-          setError('root', { type: 'server', message: t('errors.generalError') });
-        }
-      }
+      setError('root', { type: 'server', message: error.response.data.detail });
     }
   };
 
@@ -83,9 +79,9 @@ const LoginForm: React.FC = () => {
         </div>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-6">
-        {errors.root && (
+        {error && (
           <div className="p-2 bg-red-50 text-red-600 text-sm rounded border border-red-200">
-            {errors.root.message}
+            {t(`errors.${error}`)}
           </div>
         )}
 
@@ -93,7 +89,7 @@ const LoginForm: React.FC = () => {
           label={t('email')}
           error={errors.email?.message}
           {...register('email', {
-            required: t('errors.emailRequired'),
+            required: t('errors.emailRequired'),  
             pattern: {
               value: REGEX.EMAIL,
               message: t('errors.emailInvalid')

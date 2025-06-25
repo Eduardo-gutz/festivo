@@ -50,7 +50,10 @@
       "confirmPasswordRequired": "Please confirm your password",
       "passwordsDoNotMatch": "Passwords do not match",
       "termsRequired": "You must accept the terms and conditions",
-      "generalError": "There was an error during registration. Please try again."
+      "generalError": "There was an error during registration. Please try again.",
+      "EMAIL_ALREADY_REGISTERED": "This email is already registered",
+      "INVALID_CREDENTIALS": "Invalid credentials, please verify your email and password",
+      "INVALID_EMAIL": "Invalid email, please verify your email"
     }
   },
   "LoginForm": {
@@ -72,7 +75,9 @@
       "emailInvalid": "Invalid email",
       "passwordRequired": "Password is required",
       "invalidCredentials": "Invalid credentials, please verify your email and password",
-      "generalError": "There was an error during sign in. Please try again."
+      "generalError": "There was an error during sign in. Please try again.",
+      "INVALID_CREDENTIALS": "Invalid credentials, please verify your email and password",
+      "INVALID_EMAIL": "Invalid email, please verify your email"
     }
   },
   "ResetPasswordForm": {

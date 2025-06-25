@@ -9,7 +9,7 @@ import Input from '@/modules/core/components/Input';
 import Button from '@/modules/core/components/Button';
 import Checkbox from '@/modules/core/components/Checkbox';
 import PasswordInput from '@/modules/core/components/PasswordInput';
-import { useAppDispatch } from '@/modules/redux/hooks/reduxAppHooks';
+import { useAppDispatch, useAppSelector } from '@/modules/redux/hooks/reduxAppHooks';
 import { signupThunk } from '@/modules/redux/slices/auth/thunk/auth.thunk';
 import { REGEX, MIN_LENGTH } from '@/modules/auth/utils/validation';
 import SocialAuthButtons from './SocialAuthButtons';
@@ -29,6 +29,7 @@ const RegisterForm: React.FC = () => {
   const locale = useLocale();
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const { error } = useAppSelector((state) => state.auth);
 
   const {
     register,
@@ -94,9 +95,9 @@ const RegisterForm: React.FC = () => {
         </div>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-6">
-        {errors.root && (
+        {error && (
           <div className="p-2 bg-red-50 text-red-600 text-sm rounded border border-red-200">
-            {errors.root.message}
+            {t(`errors.${error}`)}
           </div>
         )}
 

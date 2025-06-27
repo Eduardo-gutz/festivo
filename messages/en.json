@@ -11,7 +11,18 @@
     "templates": "Templates",
     "pricing": "Pricing",
     "signUp": "Sign Up",
-    "login": "Login"
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "Sidebar": {
+    "dashboard": "Home",
+    "invitations": "Invitations",
+    "guests": "Guests",
+    "templates": "Templates",
+    "statistics": "Statistics",
+    "settings": "Settings",
+    "help": "Help",
+    "logout": "Logout"
   },
   "Language": {
     "select": "Select language",

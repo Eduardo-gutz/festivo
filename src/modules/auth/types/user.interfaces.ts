@@ -1,5 +1,11 @@
 // Interfaces para el servicio de usuarios
 
+export enum Role {
+  USER = 'user',
+  PUBLISHER = 'publisher',
+  ADMIN = 'admin'
+}
+
 export enum Provider {
   PASSWORD = 'password',
   GOOGLE = 'google'
@@ -15,6 +21,7 @@ export interface User {
   provider?: Provider;
   created_at: number;
   verify_email: boolean;
+  role: Role;
 }
 
 export interface UpdateUserData {

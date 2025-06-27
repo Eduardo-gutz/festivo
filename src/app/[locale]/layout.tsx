@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from "next/navigation";
-import Navbar from "@/modules/core/components/Navbar";
+import Navbar from "@/modules/core/components/navigation/Navbar";
 import { routing } from "@/i18n/routing";
 import StoreProvider from "@/modules/redux/context/StoreProvider";
 

@@ -11,7 +11,18 @@
     "templates": "Plantillas",
     "pricing": "Precios",
     "signUp": "Registrarse",
-    "login": "Iniciar sesión"
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión"
+  },
+  "Sidebar": {
+    "dashboard": "Inicio",
+    "invitations": "Invitaciones",
+    "guests": "Invitados",
+    "templates": "Plantillas",
+    "statistics": "Estadísticas",
+    "settings": "Configuración",
+    "help": "Ayuda",
+    "logout": "Cerrar sesión"
   },
   "Language": {
     "select": "Seleccionar idioma",

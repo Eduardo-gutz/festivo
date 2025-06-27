@@ -4,7 +4,7 @@ import LanguageSelector from './LanguageSelector';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useAppDispatch, useAppSelector } from '@/modules/redux/hooks/reduxAppHooks';
-import UserAvatar from './UserAvatar';
+import NavUserProfile from './NavUserProfile';
 import { useEffect } from 'react';
 import { setCredentials } from '@/modules/redux/slices/auth/auth.slice';
 import { fetchCurrentUserThunk } from '@/modules/redux/slices/user/thunk/user.thunk';
@@ -48,13 +48,7 @@ export default function Navbar() {
           <LanguageSelector />
           <div className="hidden md:flex gap-2">
             {isAuthenticated && user ? (
-              <div className="gap-2">
-                <UserAvatar 
-                  avatar={user.avatar} 
-                  username={user.username} 
-                  fullName={user.full_name} 
-                />
-              </div>
+              <NavUserProfile user={user} />
             ) : (
               <>
                 <Link
